@@ -1,0 +1,132 @@
+<div ng-controller="userListCtrl">
+  <div id="alertWrap" ng-show="alert" class="row">
+      <div class="large-12 columns">
+          <div data-alert class="alert-box alert">
+              {{ alertMessage }}
+              <a class="close" ng-click="alertClear()">&times;</a>
+          </div>
+      </div>
+  </div>
+  <div id="menuHeader" class="row">
+      <div class="large-4 columns">
+          <h3>Todos to be done</h3>
+          <div class="todoBox" ng-repeat="todo in user.todos|orderBy:'created':reverseAge|filter:{completed:'!'}">
+
+              <table>
+                  <tr>
+                      <td>Name</td>
+                      <td><strong>{{ todo.name }}</strong></td>
+                  </tr>
+                  <tr>
+                      <td>Description</td>
+                      <td>{{ todo.desc }}</td>
+                  </tr>
+                  <tr>
+                      <td>Created</td>
+                      <td>{{ todo.created | date:"medium" }}</td>
+                  </tr>
+                  <tr>
+                      <td>Updated</td>
+                      <td>{{ todo.updated | date:"medium"}}</td>
+                  </tr>
+                  <tr>
+                      <td>Completed</td>
+                      <td>{{ todo.completed | date:"medium"}}</td>
+                  </tr>
+                  <tr>
+                      <td>Owner</td>
+                      <td>{{ todo.owner }}</td>
+                  </tr>
+                  <tr>
+                      <td><a ng-click="deleteTodo(todo, $index)">Delete</a></td>
+                      <td><a ng-click="todoCompleted(todo, $index)">Done</a> <a ng-click="enableEdit(todo)">Edit</a></td>
+                  </tr>
+              </table>
+          </div>
+      </div>
+      <div class="large-4 columns">
+          <h3>Done todos</h3>
+          <div style="margin-top: 5px; margin-bottom: 5px;" ng-repeat="todo in user.todos|orderBy:'created':reverseAge|filter:{completed:'!!'}">
+              <table>
+                  <tr>
+                      <td>Name</td>
+                      <td><strong>{{ todo.name }}</strong></td>
+                  </tr>
+                  <tr>
+                      <td>Description</td>
+                      <td>{{ todo.desc }}</td>
+                  </tr>
+                  <tr>
+                      <td>Created</td>
+                      <td>{{ todo.created | date:"medium" }}</td>
+                  </tr>
+                  <tr>
+                      <td>Updated</td>
+                      <td>{{ todo.updated | date:"medium"}}</td>
+                  </tr>
+                  <tr>
+                      <td>Completed</td>
+                      <td>{{ todo.completed | date:"medium"}}</td>
+                  </tr>
+                  <tr>
+                      <td>Owner</td>
+                      <td>{{ todo.owner }}</td>
+                  </tr>
+                  <tr>
+                      <td><a ng-click="deleteTodo(todo, $index)">Delete</a></td>
+                      <td><a ng-click="todoCompleted(todo, $index)">Done</a> <a ng-click="enableEdit(todo)">Edit</a></td>
+                  </tr>
+              </table>
+          </div>
+      </div>
+      <div class="large-4 columns">
+          <div id="todoEntry">
+          <h3>{{ mode }} an item</h3>
+              <div class="row">
+                  <div class="small-2 columns">
+                      <label for='nameInput' class="right inline">Name</label>
+                  </div>
+                  <div class="small-10 columns">
+                      <input id="nameInput" type="text" ng-model="todoName"><br>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="small-2 columns">
+                      <label for='descInput' class="right inline">Desc</label>
+                  </div>
+                  <div class="small-10 columns">
+                      <input id="descInput" type="text" ng-model="todoDesc"><br>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="small-12 columns">
+                      <button ng-hide="editing" class="right" ng-click="addTodo()" ng-disabled="!todoName">Submit</button>
+                      <button ng-show="editing" class="right" ng-click="editTodo(todoEditObj)">Edit</button>
+                      <button ng-show="editing" class="right alert" ng-click="undoEdit()" ng-disabled="!todoName">Cancel</button>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="small-12 columns">
+                      <label for="ageList" class="left inline">Order by</label>
+                      <select id="ageList" ng-model="reverseAge">
+                          <option value="false">Oldest</option>
+                          <option value="true">Newest</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="small-12 columns">
+                    <p>You are logged in as <strong>{{ loggedin_user }}</strong><br>
+                    <a href="/#/logout">Logout</a></p>
+                    <p>{{ sessionid }}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#todoEntry").sticky({topSpacing:0, getWidthFrom:'#todoEntry'});
+    });
+</script>

@@ -1,0 +1,22 @@
+#todoEntry {
+    min-width: 300px;
+}
+
+#menuHeader {
+    background: #ffffff;
+}
+
+.todoBox {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#alertWrap {
+    margin-top: 10px;
+}
+
+.loginWrap {
+    max-width: 400px;
+    margin: 0 auto;
+    padding-top: 120px;
+}
