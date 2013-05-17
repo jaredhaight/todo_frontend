@@ -20,3 +20,11 @@
     margin: 0 auto;
     padding-top: 120px;
 }
+
+.todoLinks {
+    margin-top: -15px;
+    padding-top: 0;
+    font-size: .8em;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}

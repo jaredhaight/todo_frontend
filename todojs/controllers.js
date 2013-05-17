@@ -7,7 +7,7 @@ function loginCtrl($scope, $cookieStore, $routeParams, $http, $location) {
         var password = $scope.jpass;
         $http({
             method: 'POST',
-            url: 'http://127.0.0.1:8000/api/get-token/.api',
+            url: 'http://127.0.0.1:8000/get-token/.api',
             data: {'username':username, 'password': password}
          }).success(function(data){
                 var token = data.token;
@@ -102,6 +102,14 @@ function userListCtrl($scope, userListClient, todoListClient, $routeParams, $htt
         $scope.todoEditObj = null;
         $scope.editing = 'false';
         $scope.mode = 'Add';
+    };
+
+    $scope.toggleDetails = function(todo) {
+       if (todo.showDetails) {
+           todo.showDetails = false;
+       } else {
+           todo.showDetails = true;
+       }
     };
 
     $scope.editTodo = function(todo) {
@@ -223,6 +231,14 @@ function todoListCtrl($scope, todoListClient, $routeParams, $http, $cookieStore)
         }, function(data){
             $scope.alertPop('Could not edit todo', data);
         });
+    };
+
+    $scope.toggleDetails = function(todo) {
+       if (todo.showDetails) {
+           todo.showDetails = false;
+       } else {
+           todo.showDetails = true;
+       }
     };
 
     $scope.alertPop = function(message, data){

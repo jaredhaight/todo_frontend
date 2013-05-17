@@ -21,27 +21,29 @@
                       <td>Description</td>
                       <td>{{ todo.desc }}</td>
                   </tr>
-                  <tr>
+                  <tr ng-show="todo.showDetails">
                       <td>Created</td>
                       <td>{{ todo.created | date:"medium" }}</td>
                   </tr>
-                  <tr>
+                  <tr ng-show="todo.showDetails">
                       <td>Updated</td>
                       <td>{{ todo.updated | date:"medium"}}</td>
                   </tr>
-                  <tr>
+                  <tr ng-show="todo.showDetails">
                       <td>Completed</td>
                       <td>{{ todo.completed | date:"medium"}}</td>
                   </tr>
-                  <tr>
+                  <tr ng-show="todo.showDetails">
                       <td>Owner</td>
                       <td>{{ todo.owner }}</td>
                   </tr>
-                  <tr>
-                      <td><a ng-click="deleteTodo(todo, $index)">Delete</a></td>
-                      <td><a ng-click="todoCompleted(todo, $index)">Done</a> <a ng-click="enableEdit(todo)">Edit</a></td>
-                  </tr>
               </table>
+              <div class="todoLinks">
+                <a ng-click="deleteTodo(todo, $index)">Delete</a>
+                <a ng-click="toggleDetails(todo, $index)">Details</a>
+                <a ng-click="todoCompleted(todo, $index)">Done</a>
+                <a ng-click="enableEdit(todo)">Edit</a>
+              </div>
           </div>
       </div>
       <div class="large-4 columns">
@@ -56,27 +58,29 @@
                       <td>Description</td>
                       <td>{{ todo.desc }}</td>
                   </tr>
-                  <tr>
+                  <tr ng-show="todo.showDetails">
                       <td>Created</td>
                       <td>{{ todo.created | date:"medium" }}</td>
                   </tr>
-                  <tr>
+                  <tr ng-show="todo.showDetails">
                       <td>Updated</td>
                       <td>{{ todo.updated | date:"medium"}}</td>
                   </tr>
-                  <tr>
+                  <tr ng-show="todo.showDetails">
                       <td>Completed</td>
                       <td>{{ todo.completed | date:"medium"}}</td>
                   </tr>
-                  <tr>
+                  <tr ng-show="todo.showDetails">
                       <td>Owner</td>
                       <td>{{ todo.owner }}</td>
                   </tr>
-                  <tr>
-                      <td><a ng-click="deleteTodo(todo, $index)">Delete</a></td>
-                      <td><a ng-click="todoCompleted(todo, $index)">Done</a> <a ng-click="enableEdit(todo)">Edit</a></td>
-                  </tr>
               </table>
+              <div class="todoLinks">
+                <a ng-click="deleteTodo(todo, $index)">Delete</a>
+                <a ng-click="toggleDetails(todo, $index)">Details</a>
+                <a ng-click="todoCompleted(todo, $index)">Done</a>
+                <a ng-click="enableEdit(todo)">Edit</a>
+              </div>
           </div>
       </div>
       <div class="large-4 columns">
